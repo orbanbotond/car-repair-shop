@@ -65,7 +65,11 @@ group :red_green_refactor, halt_on_fail: true do
     end
   end
 
-  guard :rubocop, cli: %w(--rails --format fuubar --format html -o ./tmp/rubocop_results.html) do
+  guard :rubocop, all_on_start: false do
+    watch(%r{^app\/.+\.rb})
+    watch(%r{^lib\/.+\.rb})
+    watch(%r{^spec\/.+\.rb})
+    watch(%r{^config\/.+\.rb})
     # watch(%r{^app/(.+)\.rb})
     # watch(%r{^lib/(.+)\.rb})
     # watch(%r{^spec/(.+)\.rb})
