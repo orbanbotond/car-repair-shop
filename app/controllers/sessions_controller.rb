@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    # flash.now.alert = warden.message if warden.message.present?
-    @user = User.new
+    flash.now.alert = warden.message if warden.message.present?
   end
 
   def create

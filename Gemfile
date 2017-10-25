@@ -19,7 +19,7 @@ gem 'slim'
 gem 'trailblazer', '~> 2.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'devise'
+gem 'warden', '~> 1.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
