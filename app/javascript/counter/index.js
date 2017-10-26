@@ -1,4 +1,5 @@
-import './style.sass';
+// TODO why this?
+// import './style.sass';
 import counter from './counter';
 
 document.addEventListener('DOMContentLoaded', () => {
