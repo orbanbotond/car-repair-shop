@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-loader": "^2.2.0",
     "coffeescript": "1.12.7"
   },
   "devDependencies": {
