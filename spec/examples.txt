@@ -1,0 +1,10 @@
+example_id                                  | status  | run_time        |
+------------------------------------------- | ------- | --------------- |
+./spec/helpers/sessions_helper_spec.rb[1:1] | pending | 0.00002 seconds |
+./spec/models/user_spec.rb[1:1:1]           | passed  | 0.00088 seconds |
+./spec/models/user_spec.rb[1:1:2]           | passed  | 0.01349 seconds |
+./spec/models/user_spec.rb[1:2:1:1]         | passed  | 0.12115 seconds |
+./spec/models/user_spec.rb[1:2:2:1]         | passed  | 0.11578 seconds |
+./spec/models/user_spec.rb[1:2:2:2]         | passed  | 0.11651 seconds |
+./spec/requests/ping_spec.rb[1:1]           | passed  | 53.95 seconds   |
+./spec/requests/ping_spec.rb[1:2]           | passed  | 35.29 seconds   |
