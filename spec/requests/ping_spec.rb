@@ -10,8 +10,4 @@ describe 'GET /api/ping' do
     expect_success
     expect(response_json['ping']).to eq('pong')
   end
-
-  specify 's1' do
-    expect_success
-  end
 end
