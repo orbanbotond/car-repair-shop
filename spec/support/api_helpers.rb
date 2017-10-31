@@ -1,6 +1,10 @@
 module APIHelpers
   extend ActiveSupport::Concern
 
+  def authorization_header_for(user)
+    { 'X-Authentication-Token' => user.authorization_token }
+  end
+
   def expect_success
     call_api_endpoint_just_once
     expect(response).to be_success

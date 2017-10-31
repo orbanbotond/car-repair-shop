@@ -4,6 +4,15 @@ describe User do
   context 'fields' do
     it { is_expected.to respond_to(:email) }
     it { is_expected.to respond_to(:hashed_pwd) }
+    it { is_expected.to respond_to(:authentication_token) }
+  end
+
+  context 'callbacks' do
+    specify 'creates an authentication_token' do
+      user = build :user
+      user.save
+      expect(user.reload.authentication_token).to be_present
+    end
   end
 
   context 'methods' do
