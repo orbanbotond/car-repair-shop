@@ -18,7 +18,7 @@ describe 'GET /api/ping' do
 
     specify 'will be unauthorized...' do
       expect_unauthorized
-      expect(response_json).to eq({})
+      expect_json
     end
   end
 

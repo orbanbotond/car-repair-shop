@@ -27,7 +27,9 @@ module ApiHelpers
     end
 
     def authenticate!
-      error!('401 Unauthorized', 401) unless signed_in?
+      return if signed_in?
+
+      error! '401 Unauthorized', 401
     end
 
   private

@@ -19,6 +19,11 @@ module APIHelpers
     expect(response.status).to eq(401)
   end
 
+  def expect_json
+    call_api_endpoint_just_once
+    expect{JSON.parse(response.body)}.to_not raise_error
+  end
+
   def response_json
     @response_json ||= begin
       call_api_endpoint_just_once
