@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Common
   class PingProtected < Grape::API
     helpers ApiHelpers::AuthenticationHelper
@@ -6,12 +8,12 @@ module Common
 
     before { authenticate! }
 
-    desc 'Returns pong.'
+    desc "Returns pong."
     params do
       optional :pong, type: String
     end
     get :ping_protected do
-      { :ping => params[:pong] || 'pong' }
+      { ping: params[:pong] || "pong" }
     end
   end
 end

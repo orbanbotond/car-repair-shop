@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentPolicy < ApplicationPolicy
   attr_reader :user, :record
 
@@ -59,5 +61,4 @@ private
   def is_the_repair_mine?
     record.repair.user_id == user.id
   end
-
 end

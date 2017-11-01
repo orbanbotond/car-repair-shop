@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module APIHelpers
   extend ActiveSupport::Concern
 
   def authentication_header_for(user)
-    { 'X-Authentication-Token' => user.authentication_token }
+    { "X-Authentication-Token" => user.authentication_token }
   end
 
   def authentication_token_wrong
-    { 'X-Authentication-Token' => 'Wrong' }
+    { "X-Authentication-Token" => "Wrong" }
   end
 
   def expect_success
@@ -21,7 +23,7 @@ module APIHelpers
 
   def expect_json
     call_api_endpoint_just_once
-    expect{JSON.parse(response.body)}.to_not raise_error
+    expect { JSON.parse(response.body) }.to_not raise_error
   end
 
   def response_json

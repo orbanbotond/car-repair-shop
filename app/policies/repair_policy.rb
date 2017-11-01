@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RepairPolicy < ApplicationPolicy
   attr_reader :user, :record
 
@@ -79,5 +81,4 @@ private
   def is_it_assigned_to_me?
     record.user_id == user.id
   end
-
 end

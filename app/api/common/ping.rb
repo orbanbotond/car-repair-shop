@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Common
   class Ping < Grape::API
     format :json
 
-    desc 'Returns pong.'
+    desc "Returns pong."
     get :ping do
-      { :ping => params[:pong] || 'pong' }
+      { ping: params[:pong] || "pong" }
     end
   end
 end

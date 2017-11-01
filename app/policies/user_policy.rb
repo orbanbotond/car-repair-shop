@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPolicy < ApplicationPolicy
   attr_reader :user, :record
 
@@ -75,5 +77,4 @@ private
   def is_it_somebody_else?
     user.id != record.id
   end
-
 end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module ApiHelpers
   module AuthenticationHelper
-
-    TOKEN_PARAM_NAME = 'X-Authentication-Token'
+    TOKEN_PARAM_NAME = "X-Authentication-Token"
 
     def session_token(token_param = TOKEN_PARAM_NAME)
       headers[token_param]
@@ -29,7 +30,7 @@ module ApiHelpers
     def authenticate!
       return if signed_in?
 
-      error! '401 Unauthorized', 401
+      error! "401 Unauthorized", 401
     end
 
   private

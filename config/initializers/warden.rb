@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.config.middleware.use Warden::Manager do |manager|
   manager.default_strategies :password
   manager.failure_app = lambda { |env| SessionsController.action(:new).call(env) }
@@ -14,12 +16,12 @@ end
 
 Warden::Strategies.add(:password) do
   def valid?
-    params['email'] && params['password']
+    params["email"] && params["password"]
   end
-  
+
   def authenticate!
-    user = User.find_by_email(params['email'])
-    if user && user.valid_pwd?(params['password'])
+    user = User.find_by_email(params["email"])
+    if user && user.valid_pwd?(params["password"])
       success! user
     else
       fail "Invalid email or password"
