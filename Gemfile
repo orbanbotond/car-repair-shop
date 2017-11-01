@@ -16,12 +16,14 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'simple_form_bootstrap3'
 gem 'slim'
-gem 'trailblazer', '~> 2.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'warden', '~> 1.2'
 gem 'grape'
 gem 'grape-entity'
+gem 'trailblazer-operation'
+gem 'pundit'
+gem 'rolify'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

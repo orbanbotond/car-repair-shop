@@ -15,6 +15,11 @@ describe User do
     end
   end
 
+  context 'rolification' do
+    it { is_expected.to respond_to(:add_role) }
+    it { is_expected.to respond_to(:has_role?) }
+  end
+
   context 'methods' do
     context '#password=' do
       specify 'changes the hashed_pwd' do

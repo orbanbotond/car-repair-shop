@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
 
   before_save :create_authentication_token
 
