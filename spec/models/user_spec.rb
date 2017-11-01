@@ -7,6 +7,11 @@ describe User do
     it { is_expected.to respond_to(:authentication_token) }
   end
 
+  context 'associations' do
+    it { is_expected.to have_many(:repairs) }
+    # it { should have_many(:repairs) }
+  end
+
   context 'callbacks' do
     specify 'creates an authentication_token' do
       user = build :user

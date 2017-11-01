@@ -35,10 +35,11 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'guard-rubocop', require: false
   gem 'pry-byebug'
+  gem 'pundit-matchers', '~> 1.4.1'
   gem 'reek'
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
-  gem 'pundit-matchers', '~> 1.4.1'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

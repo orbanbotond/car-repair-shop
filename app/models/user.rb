@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   rolify
 
+  has_many :repairs
+
   before_save :create_authentication_token
 
   def password=(pwd)
