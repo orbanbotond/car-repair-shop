@@ -7,5 +7,6 @@ RSpec.describe Repair do
 
   context 'associations' do
     it { is_expected.to belong_to(:user).optional }
+    it { is_expected.to have_many(:comments) }
   end
 end
