@@ -38,6 +38,7 @@ group :development, :test do
   gem 'reek'
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
+  gem 'pundit-matchers', '~> 1.4.1'
 end
 
 group :development do

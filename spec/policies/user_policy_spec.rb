@@ -11,13 +11,13 @@ describe UserPolicy do
     context 'for the admin role' do
       let(:user) { create :admin_user }
 
-      it { is_expected.to be_able_to(:new) }
+      it { is_expected.to permit_action(:new) }
     end
 
     context 'for the non admin role' do
       let(:user) { create :user }
 
-      it { is_expected.to_not be_able_to(:new) }
+      it { is_expected.to forbid_action(:new) }
     end
   end
 
@@ -27,13 +27,13 @@ describe UserPolicy do
     context 'for the admin role' do
       let(:user) { create :admin_user }
 
-      it { is_expected.to be_able_to(:create) }
+      it { is_expected.to permit_action(:create) }
     end
 
     context 'for the non admin role' do
       let(:user) { create :user }
 
-      it { is_expected.to_not be_able_to(:create) }
+      it { is_expected.to forbid_action(:create) }
     end
   end
 
@@ -43,13 +43,13 @@ describe UserPolicy do
     context 'for the admin role' do
       let(:user) { create :admin_user }
 
-      it { is_expected.to be_able_to(:update) }
+      it { is_expected.to permit_action(:update) }
     end
 
     context 'for the non admin role' do
       let(:user) { create :user }
 
-      it { is_expected.to_not be_able_to(:update) }
+      it { is_expected.to forbid_action(:update) }
     end
   end
 
@@ -59,13 +59,19 @@ describe UserPolicy do
     context 'for the admin role' do
       let(:user) { create :admin_user }
 
-      it { is_expected.to be_able_to(:show) }
+      it { is_expected.to permit_action(:show) }
     end
 
     context 'for the non admin role' do
       let(:user) { create :user }
 
-      it { is_expected.to_not be_able_to(:show) }
+      it { is_expected.to forbid_action(:show) }
+
+      context 'myself' do
+        let(:record) { user }
+
+        it { is_expected.to permit_action(:show) }
+      end
     end
   end
 
@@ -75,13 +81,13 @@ describe UserPolicy do
     context 'for the admin role' do
       let(:user) { create :admin_user }
 
-      it { is_expected.to be_able_to(:edit) }
+      it { is_expected.to permit_action(:edit) }
     end
 
     context 'for the non admin role' do
       let(:user) { create :user }
 
-      it { is_expected.to_not be_able_to(:edit) }
+      it { is_expected.to forbid_action(:edit) }
     end
   end
 
@@ -92,19 +98,19 @@ describe UserPolicy do
     context 'for the admin role' do
       let(:user) { create :admin_user }
 
-      it { is_expected.to be_able_to(:destroy) }
+      it { is_expected.to permit_action(:destroy) }
 
       context 'trying to destroy ourselves' do
         let(:record) { user }
 
-        it { is_expected.to_not be_able_to(:destroy) }
+        it { is_expected.to forbid_action(:destroy) }
       end
     end
 
     context 'for the non admin role' do
       let(:user) { create :user }
 
-      it { is_expected.to_not be_able_to(:destroy) }
+      it { is_expected.to forbid_action(:destroy) }
     end
   end
 
@@ -114,13 +120,13 @@ describe UserPolicy do
     context 'for the admin role' do
       let(:user) { create :admin_user }
 
-      it { is_expected.to be_able_to(:index) }
+      it { is_expected.to permit_action(:index) }
     end
 
     context 'for the non admin role' do
       let(:user) { create :user }
 
-      it { is_expected.to_not be_able_to(:index) }
+      it { is_expected.to forbid_action(:index) }
     end
   end
 

@@ -4,7 +4,7 @@ FactoryBot.define do
     password 'The Password'
 
     factory :admin_user, parent: :user do
-      after(:create) do |u|
+      after(:create) do |user|
         user.add_role :admin
       end
     end
