@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers
+  revision: 195bc130194c0419e937ba8879114ae4473075ca
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -266,8 +273,6 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
     shellany (0.0.1)
-    shoulda-matchers (3.1.2)
-      activesupport (>= 4.0.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -355,7 +360,7 @@ DEPENDENCIES
   rspec-rails (~> 3.6)
   sass-rails (~> 5.0)
   selenium-webdriver
-  shoulda-matchers (~> 3.1)
+  shoulda-matchers!
   simple_form
   simple_form_bootstrap3
   slim

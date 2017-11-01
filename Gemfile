@@ -39,7 +39,8 @@ group :development, :test do
   gem 'reek'
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 3.1'
+  # Needed for the optional matcher
+  gem 'shoulda-matchers', :git => 'https://github.com/thoughtbot/shoulda-matchers'
 end
 
 group :development do

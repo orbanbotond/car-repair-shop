@@ -6,6 +6,6 @@ RSpec.describe Repair do
   end
 
   context 'associations' do
-    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:user).optional }
   end
 end

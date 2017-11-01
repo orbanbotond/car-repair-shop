@@ -4,18 +4,20 @@ describe UserPolicy do
   let(:policy) { described_class.new user, record }
   let(:subject) { policy }
   let(:record) { nil }
+  let(:admin_user) { create :admin_user }
+  let(:regular_user) { create :user }
 
   context 'new? action' do
     let(:record) { User.new }
 
     context 'for the admin role' do
-      let(:user) { create :admin_user }
+      let(:user) { admin_user }
 
       it { is_expected.to permit_action(:new) }
     end
 
     context 'for the non admin role' do
-      let(:user) { create :user }
+      let(:user) { regular_user }
 
       it { is_expected.to forbid_action(:new) }
     end
@@ -25,13 +27,13 @@ describe UserPolicy do
     let(:record) { User.new }
 
     context 'for the admin role' do
-      let(:user) { create :admin_user }
+      let(:user) { admin_user }
 
       it { is_expected.to permit_action(:create) }
     end
 
     context 'for the non admin role' do
-      let(:user) { create :user }
+      let(:user) { regular_user }
 
       it { is_expected.to forbid_action(:create) }
     end
@@ -41,13 +43,13 @@ describe UserPolicy do
     let(:record) { create :user }
 
     context 'for the admin role' do
-      let(:user) { create :admin_user }
+      let(:user) { admin_user }
 
       it { is_expected.to permit_action(:update) }
     end
 
     context 'for the non admin role' do
-      let(:user) { create :user }
+      let(:user) { regular_user }
 
       it { is_expected.to forbid_action(:update) }
     end
@@ -57,13 +59,13 @@ describe UserPolicy do
     let(:record) { create :user }
 
     context 'for the admin role' do
-      let(:user) { create :admin_user }
+      let(:user) { admin_user }
 
       it { is_expected.to permit_action(:show) }
     end
 
     context 'for the non admin role' do
-      let(:user) { create :user }
+      let(:user) { regular_user }
 
       it { is_expected.to forbid_action(:show) }
 
@@ -79,13 +81,13 @@ describe UserPolicy do
     let(:record) { create :user }
 
     context 'for the admin role' do
-      let(:user) { create :admin_user }
+      let(:user) { admin_user }
 
       it { is_expected.to permit_action(:edit) }
     end
 
     context 'for the non admin role' do
-      let(:user) { create :user }
+      let(:user) { regular_user }
 
       it { is_expected.to forbid_action(:edit) }
     end
@@ -96,7 +98,7 @@ describe UserPolicy do
     let(:record) { create :user }
 
     context 'for the admin role' do
-      let(:user) { create :admin_user }
+      let(:user) { admin_user }
 
       it { is_expected.to permit_action(:destroy) }
 
@@ -108,7 +110,7 @@ describe UserPolicy do
     end
 
     context 'for the non admin role' do
-      let(:user) { create :user }
+      let(:user) { regular_user }
 
       it { is_expected.to forbid_action(:destroy) }
     end
@@ -118,13 +120,13 @@ describe UserPolicy do
     let(:record) { create :user }
 
     context 'for the admin role' do
-      let(:user) { create :admin_user }
+      let(:user) { admin_user }
 
       it { is_expected.to permit_action(:index) }
     end
 
     context 'for the non admin role' do
-      let(:user) { create :user }
+      let(:user) { regular_user }
 
       it { is_expected.to forbid_action(:index) }
     end

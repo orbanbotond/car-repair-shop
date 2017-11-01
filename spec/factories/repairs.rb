@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :repair do
-    name "MyString"
+    name { FFaker::Product.product }
     user nil
   end
 end
