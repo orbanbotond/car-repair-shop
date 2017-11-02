@@ -23,9 +23,12 @@ gem "uglifier", ">= 1.3.0"
 gem "warden", "~> 1.2"
 gem "grape"
 gem "grape-entity"
-gem "trailblazer-operation"
+# gem "dry-validation"
+# gem "dry-types"
 gem "pundit"
+gem "reform"
 gem "rolify"
+gem "trailblazer"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
