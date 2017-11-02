@@ -15,8 +15,7 @@ describe User::Create do
       specify do
         result = User::Create.call(params)
         expect(result.success?).to be_falsy
-        expect(result["result.error"]).to be_truthy
-binding.pry
+        expect(result["contract.default"].errors[:email]).to be_present
       end
     end
   end
