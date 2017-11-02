@@ -1,4 +1,6 @@
-require 'reform/form/dry'
+# frozen_string_literal: true
+
+require "reform/form/dry"
 
 class User::Create < Trailblazer::Operation
   extend Contract::DSL
@@ -13,7 +15,7 @@ class User::Create < Trailblazer::Operation
     end
   end
 
-  step     Model( User, :new )
+  step     Model(User, :new)
   step     Contract::Build()
   step     Contract::Validate()
   step     Contract::Persist()
