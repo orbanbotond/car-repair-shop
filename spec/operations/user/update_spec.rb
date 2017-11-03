@@ -82,6 +82,7 @@ describe User::Update do
         expect(user.valid_password? attributes_for(:user)[:password]).to be_truthy
         expect do
           result = described_class.call(params, options)
+          binding.pry
           expect(result.success?).to be_truthy
           expect(result["model"]).to be_a(User)
           expect(result["model"].valid_password? attributes_for(:user)[:password]).to be_truthy
@@ -97,6 +98,7 @@ describe User::Update do
         result = described_class.call(params, options)
         expect(result.success?).to be_truthy
         expect(result['model']).to be_a(User)
+        binding.pry
         expect(result['model'].valid_password? params[:password]).to be_truthy
       end
     end

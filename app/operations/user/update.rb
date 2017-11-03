@@ -10,10 +10,11 @@ class User::Update < Trailblazer::Operation
 
     property :id
     property :email
-    property :password, readable: false, parse: false
+    property :password, virtual: true
 
     validation do
       optional(:email).filled(:str?, format?: /.+@.*\./)
+      # optional(:password).filled
     end
   end
 
@@ -22,7 +23,8 @@ class User::Update < Trailblazer::Operation
   step     Policy::Pundit( UserPolicy, :update? )
   step     Contract::Build()
   step     Contract::Validate()
-  step     :save!
+  step     Contract::Persist()
+  # step     :save!
 
   def save!(options, params:, **)
     changed_props = options['contract.default'].changed.map{|k,v| k if v }.compact.map(&:to_sym)
