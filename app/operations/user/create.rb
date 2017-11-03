@@ -9,7 +9,7 @@ class User::Create < Trailblazer::Operation
     feature Reform::Form::Dry
 
     property :email
-    property :password
+    property :password, readable: false
 
     validation do
       required(:email).filled(:str?, format?: /.+@.*\./)

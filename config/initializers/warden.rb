@@ -21,7 +21,7 @@ Warden::Strategies.add(:password) do
 
   def authenticate!
     user = User.find_by_email(params["email"])
-    if user && user.valid_pwd?(params["password"])
+    if user && user.valid_password?(params["password"])
       success! user
     else
       fail "Invalid email or password"

@@ -35,15 +35,15 @@ describe User do
       end
     end
 
-    context "valid_pwd?" do
+    context "valid_password?" do
       specify "it is true for a valid pwd" do
         user = build :user
-        expect(user.valid_pwd? "The Password").to be_truthy
+        expect(user.valid_password? "The Password").to be_truthy
       end
 
       specify "it is false for a valid pwd" do
         user = build :user
-        expect(user.valid_pwd? "Invalid Password").to be_falsy
+        expect(user.valid_password? "Invalid Password").to be_falsy
       end
     end
   end

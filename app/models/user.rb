@@ -1,21 +1,25 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include BCrypt
+
   rolify
 
   has_many :repairs
 
   before_save :create_authentication_token
 
-  def password=(pwd)
-    self.hashed_pwd = BCrypt::Password.create(pwd)
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.hashed_pwd = @password
   end
 
   def password
+    @password ||= Password.new(hashed_pwd)
   end
 
-  def valid_pwd?(pwd)
-    BCrypt::Password.new(self.hashed_pwd) == pwd
+  def valid_password?(pwd)
+    password == pwd
   end
 
   def create_authentication_token
