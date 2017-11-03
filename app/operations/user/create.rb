@@ -9,9 +9,11 @@ class User::Create < Trailblazer::Operation
     feature Reform::Form::Dry
 
     property :email
+    property :password
 
     validation do
-      required(:email).filled
+      required(:email).filled(format?: /.+@.*\./)
+      required(:password).filled
     end
   end
 

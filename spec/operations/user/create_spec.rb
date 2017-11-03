@@ -9,13 +9,57 @@ describe User::Create do
   let(:params) { original_params }
 
   context "input validation" do
-    context "email is missing" do
-      let(:params) { original_params.except(:email) }
+    context "email field" do
+      context "is missing" do
+        let(:params) { original_params.except(:email) }
 
-      specify do
-        result = User::Create.call(params)
-        expect(result.success?).to be_falsy
-        expect(result["contract.default"].errors[:email]).to be_present
+        specify do
+          result = User::Create.call(params)
+          expect(result.success?).to be_falsy
+          expect(result["contract.default"].errors[:email]).to be_present
+        end
+      end
+
+      context "is blank" do
+        let(:params) { original_params.merge(email: "") }
+
+        specify do
+          result = User::Create.call(params)
+          expect(result.success?).to be_falsy
+          expect(result["contract.default"].errors[:email]).to be_present
+        end
+      end
+
+      context "is not an email format" do
+        let(:params) { original_params.merge(email: "non_email") }
+
+        specify do
+          result = User::Create.call(params)
+          expect(result.success?).to be_falsy
+          expect(result["contract.default"].errors[:email]).to be_present
+        end
+      end
+    end
+
+    context "password field" do
+      context "is emptty" do
+        let(:params) { original_params.merge(password: "") }
+
+        specify do
+          result = User::Create.call(params)
+          expect(result.success?).to be_falsy
+          expect(result["contract.default"].errors[:password]).to be_present
+        end
+      end
+
+      context "is missing" do
+        let(:params) { original_params.except(:password) }
+
+        specify do
+          result = User::Create.call(params)
+          expect(result.success?).to be_falsy
+          expect(result["contract.default"].errors[:password]).to be_present
+        end
       end
     end
   end

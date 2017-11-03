@@ -11,6 +11,9 @@ class User < ApplicationRecord
     self.hashed_pwd = BCrypt::Password.create(pwd)
   end
 
+  def password
+  end
+
   def valid_pwd?(pwd)
     BCrypt::Password.new(self.hashed_pwd) == pwd
   end
