@@ -76,7 +76,7 @@ describe User::Create do
 
   context "positive case" do
     specify "a new user is created" do
-      params
+      options
       expect do
         result = described_class.call(params, options)
         expect(result.success?).to be_truthy
