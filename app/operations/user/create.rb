@@ -12,7 +12,7 @@ class User::Create < Trailblazer::Operation
     property :password
 
     validation do
-      required(:email).filled(format?: /.+@.*\./)
+      required(:email).filled(:str?, format?: /.+@.*\./)
       required(:password).filled
     end
   end
