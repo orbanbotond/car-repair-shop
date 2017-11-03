@@ -14,7 +14,7 @@ describe User::Create do
         let(:params) { original_params.except(:email) }
 
         specify do
-          result = User::Create.call(params)
+          result = described_class.call(params)
           expect(result.success?).to be_falsy
           expect(result["contract.default"].errors[:email]).to be_present
         end
@@ -24,7 +24,7 @@ describe User::Create do
         let(:params) { original_params.merge(email: "") }
 
         specify do
-          result = User::Create.call(params)
+          result = described_class.call(params)
           expect(result.success?).to be_falsy
           expect(result["contract.default"].errors[:email]).to be_present
         end
@@ -34,7 +34,7 @@ describe User::Create do
         let(:params) { original_params.merge(email: "non_email") }
 
         specify do
-          result = User::Create.call(params)
+          result = described_class.call(params)
           expect(result.success?).to be_falsy
           expect(result["contract.default"].errors[:email]).to be_present
         end
@@ -46,7 +46,7 @@ describe User::Create do
         let(:params) { original_params.merge(password: "") }
 
         specify do
-          result = User::Create.call(params)
+          result = described_class.call(params)
           expect(result.success?).to be_falsy
           expect(result["contract.default"].errors[:password]).to be_present
         end
@@ -56,11 +56,23 @@ describe User::Create do
         let(:params) { original_params.except(:password) }
 
         specify do
-          result = User::Create.call(params)
+          result = described_class.call(params)
           expect(result.success?).to be_falsy
           expect(result["contract.default"].errors[:password]).to be_present
         end
       end
     end
   end
+
+  context "positive case" do
+    specify "a new user is created" do
+      params
+      expect do
+        result = described_class.call(params)
+        expect(result.success?).to be_truthy
+      end.to change { User.count }.by(1)
+    end
+  end
+
+  #TODO check for the regular user...
 end
