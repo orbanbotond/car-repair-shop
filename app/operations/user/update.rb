@@ -10,7 +10,7 @@ class User::Update < Trailblazer::Operation
 
     property :id
     property :email
-    property :password, virtual: true
+    property :password, readable: false
 
     validation do
       optional(:email).filled(:str?, format?: /.+@.*\./)
@@ -24,12 +24,6 @@ class User::Update < Trailblazer::Operation
   step     Contract::Build()
   step     Contract::Validate()
   step     Contract::Persist()
-  # step     :save!
-
-  def save!(options, params:, **)
-    changed_props = options['contract.default'].changed.map{|k,v| k if v }.compact.map(&:to_sym)
-    options['model'].update_attributes options['params'].slice(*changed_props)
-  end
 
   def check_params_id!(options, params:, **)
     unless params[:id]

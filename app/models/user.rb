@@ -10,6 +10,8 @@ class User < ApplicationRecord
   before_save :create_authentication_token
 
   def password=(new_password)
+    return unless new_password
+
     @password = Password.create(new_password)
     self.hashed_pwd = @password
   end
