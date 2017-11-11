@@ -1,5 +1,5 @@
 module Macro
-  def self.CheckId(parameter_name: "id")
+  def self.CheckId(parameter_name: :id)
     step = ->(input, options) do
       params = options['params']
       unless params[parameter_name]
