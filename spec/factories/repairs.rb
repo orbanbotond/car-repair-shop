@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :repair do
     name { FFaker::Product.product }
-    user nil
+    user
   end
 end
