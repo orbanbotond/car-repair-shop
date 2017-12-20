@@ -17,8 +17,8 @@ class Repair::Update < Trailblazer::Operation
 
   step     Macro::CheckId(), fail_fast: true
   step     Model(Repair, :find_by)
-  step     Policy::Pundit( UserPolicy, :update? )
+  step     Policy::Pundit( RepairPolicy, :update? )
   step     Contract::Build()
-  step     Contract::Validate(), fail_fast: true
+  step     Contract::Validate()
   step     Contract::Persist()
 end
