@@ -14,15 +14,15 @@ describe Repair::Update do
   context 'negative cases' do
     context "input validation" do
       context "name field" do
-        # context "is missing" do
-        #   let(:params) { original_params.except(:name) }
+        context "is missing" do
+          let(:params) { original_params.except(:name) }
 
-        #   specify do
-        #     result = described_class.call(params, options)
-        #     expect(result.success?).to be_falsy
-        #     expect(result["contract.default"].errors[:name]).to be_present
-        #   end
-        # end
+          specify do
+            result = described_class.call(params, options)
+            expect(result.success?).to be_falsy
+            expect(result["contract.default"].errors[:name]).to be_present
+          end
+        end
 
         context "is blank" do
           let(:params) { original_params.merge(name: nil) }
@@ -72,40 +72,40 @@ describe Repair::Update do
 
   context "authorization" do
     context 'admin_user' do
-      let(:current_user) { admin_user }
+      # let(:current_user) { admin_user }
 
-      context 'tries to approve' do
-        specify 'should not be authorized' do
-          result = described_class.call(params.merge(approved: true), options)
-          expect(result.success?).to be_truthy
-        end
-      end
+      # context 'tries to approve' do
+      #   specify 'should not be authorized' do
+      #     result = described_class.call(params.merge(approved: true), options)
+      #     expect(result.success?).to be_truthy
+      #   end
+      # end
 
-      context 'tries to complete' do
-        specify 'should be authorized' do
-          result = described_class.call(params.merge(completed: true), options)
-          expect(result.success?).to be_truthy
-        end
-      end
+      # context 'tries to complete' do
+      #   specify 'should be authorized' do
+      #     result = described_class.call(params.merge(completed: true), options)
+      #     expect(result.success?).to be_truthy
+      #   end
+      # end
 
-      context 'tries to uncomplete' do
-        specify 'should not be authorized' do
-          result = described_class.call(params.merge(completed: false), options)
-          expect(result.success?).to be_truthy
-        end
-      end
+      # context 'tries to uncomplete' do
+      #   specify 'should not be authorized' do
+      #     result = described_class.call(params.merge(completed: false), options)
+      #     expect(result.success?).to be_truthy
+      #   end
+      # end
     end
 
-    context 'owner_user' do
-      let(:current_user) { owner_user }
+    # context 'owner_user' do
+    #   let(:current_user) { owner_user }
 
-      context 'tries to complete' do
-        specify 'should be authorized' do
-          result = described_class.call(params, options)
-          expect(result.success?).to be_truthy
-        end
-      end
-    end
+    #   context 'tries to complete' do
+    #     specify 'should be authorized' do
+    #       result = described_class.call(params, options)
+    #       expect(result.success?).to be_truthy
+    #     end
+    #   end
+    # end
 
     context 'non owner' do     
       let(:current_user) { create :user }
