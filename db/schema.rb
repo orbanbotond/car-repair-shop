@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20171111124931) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "completed"
-    t.boolean "approved"
+    t.boolean "completed", default: false
+    t.boolean "approved", default: false
     t.index ["user_id"], name: "index_repairs_on_user_id"
   end
 
