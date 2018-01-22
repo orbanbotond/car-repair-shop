@@ -16,7 +16,7 @@ class Repair::Create < Trailblazer::Operation
   end
 
   step     Model(Repair, :new)
-  step     Policy::Pundit( RepairPolicy, :create? )
+  step     Policy::Pundit(RepairPolicy, :create?)
   step     Contract::Build()
   step     Contract::Validate()
   step     Contract::Persist()

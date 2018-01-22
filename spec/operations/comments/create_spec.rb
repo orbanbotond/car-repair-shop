@@ -68,20 +68,20 @@ describe Comment::Create do
   end
 
   context "authorization" do
-    context 'for a user who is not an owner of the repair' do
+    context "for a user who is not an owner of the repair" do
       let(:current_user) { create :user }
 
-      specify 'should be authorized' do
+      specify "should be authorized" do
         result = described_class.call(params, options, options)
         expect(result.success?).to be_falsy
-        expect(result['result.policy.default']['message']).to eq('Breach')
+        expect(result["result.policy.default"]["message"]).to eq("Breach")
       end
     end
 
-    context 'for the owner of the repair' do
+    context "for the owner of the repair" do
       let(:current_user) { repair_owner }
 
-      specify 'should be authorized' do
+      specify "should be authorized" do
         result = described_class.call(params, options, options)
         expect(result.success?).to be_truthy
       end

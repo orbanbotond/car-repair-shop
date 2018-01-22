@@ -18,7 +18,7 @@ class Comment::Create < Trailblazer::Operation
   step     Macro::CheckId(parameter_name: :repair_id), fail_fast: true
   step     :find_repair
   step     :instantiate_new_comment
-  step     Policy::Pundit( CommentPolicy, :create? )
+  step     Policy::Pundit(CommentPolicy, :create?)
   step     Contract::Build()
   step     Contract::Validate()
   step     Contract::Persist()

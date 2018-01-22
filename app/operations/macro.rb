@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Macro
   def self.CheckId(parameter_name: :id)
     step = ->(input, options) do
-      params = options['params']
+      params = options["params"]
       unless params[parameter_name]
         options["params.errors"] = "No ID in params!"
         return false

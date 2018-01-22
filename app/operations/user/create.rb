@@ -18,7 +18,7 @@ class User::Create < Trailblazer::Operation
   end
 
   step     Model(User, :new)
-  step     Policy::Pundit( UserPolicy, :create? )
+  step     Policy::Pundit(UserPolicy, :create?)
   step     Contract::Build()
   step     Contract::Validate()
   step     Contract::Persist()

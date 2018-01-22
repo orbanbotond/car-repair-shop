@@ -7,8 +7,8 @@ class User::Destroy < Trailblazer::Operation
 
   step     Macro::CheckId(), fail_fast: true
   step     Model(User, :find)
-  step     Policy::Pundit( UserPolicy, :destroy? )
-  step    :destroy_model!
+  step     Policy::Pundit(UserPolicy, :destroy?)
+  step :destroy_model!
 
   def destroy_model!(options, params:, **)
     options["model"].destroy

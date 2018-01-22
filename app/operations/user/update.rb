@@ -20,7 +20,7 @@ class User::Update < Trailblazer::Operation
 
   step     Macro::CheckId(), fail_fast: true
   step     Model(User, :find_by)
-  step     Policy::Pundit( UserPolicy, :update? )
+  step     Policy::Pundit(UserPolicy, :update?)
   step     Contract::Build()
   step     Contract::Validate()
   step     Contract::Persist()

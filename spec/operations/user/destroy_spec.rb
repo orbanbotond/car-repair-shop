@@ -10,11 +10,11 @@ describe User::Destroy do
   let(:params) { original_params }
   let(:options) { { "current_user" => current_user } }
 
-  context 'negative cases' do
-    specify 'admin can not destroy himself' do
+  context "negative cases" do
+    specify "admin can not destroy himself" do
       result = described_class.call(params.merge(id: current_user.id), options)
       expect(result.success?).to be_falsy
-      expect(result['result.policy.default']['message']).to eq('Breach')
+      expect(result["result.policy.default"]["message"]).to eq("Breach")
     end
 
     context "input validation" do
@@ -55,10 +55,10 @@ describe User::Destroy do
   context "authorization for non admin user" do
     let(:current_user) { create :user }
 
-    specify 'should not be authorized' do
+    specify "should not be authorized" do
       result = described_class.call(params, options)
       expect(result.success?).to be_falsy
-      expect(result['result.policy.default']['message']).to eq('Breach')
+      expect(result["result.policy.default"]["message"]).to eq("Breach")
     end
   end
 

@@ -68,10 +68,10 @@ describe User::Create do
   context "authorization for non admin" do
     let(:current_user) { create :user }
 
-    specify 'should not be authorized' do
+    specify "should not be authorized" do
       result = described_class.call(params, options, options)
       expect(result.success?).to be_falsy
-      expect(result['result.policy.default']['message']).to eq('Breach')
+      expect(result["result.policy.default"]["message"]).to eq("Breach")
     end
   end
 

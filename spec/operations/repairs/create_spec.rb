@@ -37,13 +37,13 @@ describe Repair::Create do
   end
 
   context "authorization" do
-    context 'for a regular_user' do
+    context "for a regular_user" do
       let(:current_user) { regular_user }
 
-      specify 'should not be authorized' do
+      specify "should not be authorized" do
         result = described_class.call(params, options, options)
         expect(result.success?).to be_falsy
-        expect(result['result.policy.default']['message']).to eq('Breach')
+        expect(result["result.policy.default"]["message"]).to eq("Breach")
       end
     end
   end
